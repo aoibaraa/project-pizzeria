@@ -83,19 +83,18 @@
       const thisProduct = this;
 
       /* find the clickable trigger (the element that should react to clicking) */
-      const buttonTest = document.getElementById('button-test');
+      const clickableTrigger = this.element.querySelector('.product__header');
 
-      buttonTest.addEventListener('click', function(){
+      clickableTrigger.addEventListener('click', function(event){
         console.log('clicked');
-      });
 
-      /* START: click event listener to trigger */
+        /* START: click event listener to trigger */
 
         /* prevent default action for event */
         event.preventDefault();
 
         /* toggle active class on element of thisProduct */
-
+        thisProduct.element.classList.add('active');
         /* find all active products */
         const activeProducts = document.querySelectorAll('.active');
         /* START LOOP: for each active product */
@@ -109,6 +108,9 @@
         /* END LOOP: for each active product */
         }
       /* END: click event listener to trigger */
+      });
+
+      
     }
   }
 
