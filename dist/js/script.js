@@ -62,6 +62,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
       // console.log('new Product:', thisProduct);
     }
@@ -91,6 +92,8 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
 
     initAccordion() {
@@ -158,6 +161,7 @@
       /* set variable price to equal thisProduct.data.price */
       let price = thisProduct.data.price;
 
+
       /* START LOOP: for each paramId in thisProduct.data.params */
       for(let paramId in thisProduct.data.params){
         /* save the element in thisProduct.data.params with key paramId as const param */
@@ -178,6 +182,34 @@
             /* deduct price of option from price */
             price = price - option.price;
           }
+
+          const images = thisProduct.imageWrapper.querySelectorAll('img');
+          //console.log('images:', images);
+
+          for(let image of images){
+            //console.log('image:', image);
+            const className = param +'-'+ option;
+            //console.log('className:', className);
+            if(image.classList.contains(className) && optionSelected){
+              image.classList.add('active');
+            }
+            else if(image.classList.contains(className) && !optionSelected){
+              image.classList.remove('active');
+            }
+          }
+
+          //const images = thisProduct.imageWrapper.querySelectorAll('img');
+
+          // for(let image of images){
+          //   console.log('image:', image);
+          //   if(optionSelected){
+          //       image.classList.add('active');//.classList.add('active')
+          //   }
+          //   else{
+          //       image.classList.remove('active');
+          //     }
+          // }
+
           /* END ELSE IF: if option is not selected and option is default */
         }
         /* END LOOP: for each optionId in param.options */
@@ -185,10 +217,48 @@
       /* END LOOP: for each paramId in thisProduct.data.params */
 
       /* set the contents of thisProduct.priceElem to be the value of variable price */
-      thisProduct.priceElem = price;
-      console.log('priceElem', thisProduct.priceElem);
+      thisProduct.priceElem.innerHTML = price;
+      //console.log('priceElem', thisProduct.priceElem);
 
      
+    }
+
+    initAmountWidget() {
+      const thisProduct = this;
+
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+    }
+
+  }
+
+  class AmountWidget{
+    constructor(element){
+      const thisWidget = this;
+
+      thisWidget.getElements(element);
+      thisWidget.setValue(thisWidget.input.value);
+      console.log('AmountWidget: ', thisWidget);
+      console.log('constructor arguments:', element);
+    }
+
+    getElements(element){
+      const thisWidget = this;
+    
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    }
+
+    setValue(value){
+      const thisWidget = this;
+
+      const newValue = parseInt(value);
+
+      /* TODO: Add validation */
+
+      thisWidget.value = newValue;
+      thisWidget.input.value = thisWidget.value;
     }
 
   }
