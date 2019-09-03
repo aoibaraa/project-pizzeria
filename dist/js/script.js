@@ -167,10 +167,12 @@
         /* save the element in thisProduct.data.params with key paramId as const param */
         const param = thisProduct.data.params[paramId];
         /* START LOOP: for each optionId in param.options */
+        console.log('param.options', param.options);
         for(let optionId in param.options){
           /* save the element in param.options with key optionId as const option */
           const option = param.options[optionId];
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+         
           /* START IF: if option is selected and option is not default */
           if(optionSelected && !option.default){
             /* add price of option to variable price */
@@ -183,37 +185,29 @@
             price = price - option.price;
           }
 
-          const images = thisProduct.imageWrapper.querySelectorAll('img');
-          //console.log('images:', images);
 
-          for(let image of images){
-            //console.log('image:', image);
-            const className = param +'-'+ option;
-            //console.log('className:', className);
-            if(image.classList.contains(className) && optionSelected){
-              image.classList.add('active');
+          const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+          console.log('images:', images);
+          console.log('optionSelected', optionSelected);
+            if(optionSelected){
+              for(let image of images){
+                image.classList.add(classNames.menuProduct.imageVisible);
+
+              }
             }
-            else if(image.classList.contains(className) && !optionSelected){
-              image.classList.remove('active');
+            else if(!optionSelected){
+              for(let image of images){
+                image.classList.remove(classNames.menuProduct.imageVisible);
+
+              }
             }
-          }
-
-          //const images = thisProduct.imageWrapper.querySelectorAll('img');
-
-          // for(let image of images){
-          //   console.log('image:', image);
-          //   if(optionSelected){
-          //       image.classList.add('active');//.classList.add('active')
-          //   }
-          //   else{
-          //       image.classList.remove('active');
-          //     }
-          // }
+          
 
           /* END ELSE IF: if option is not selected and option is default */
-        }
+      }
         /* END LOOP: for each optionId in param.options */
       }
+    
       /* END LOOP: for each paramId in thisProduct.data.params */
 
       /*multiply price by amount */
