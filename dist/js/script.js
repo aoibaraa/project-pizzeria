@@ -111,19 +111,17 @@
         event.preventDefault();
 
         /* toggle active class on element of thisProduct */
-        thisProduct.element.classList.add('active');
         /* find all active products */
-        const activeProducts = document.querySelectorAll('.active');
+        const activeProducts = document.querySelectorAll('article.product.active');
         /* START LOOP: for each active product */
         for (let activeProduct of activeProducts) {
           /* START: if the active product isn't the element of thisProduct */
-          if (activeProduct != thisProduct.element) {
             /* remove class active for the active product */
             activeProduct.classList.remove('active');
             /* END: if the active product isn't the element of thisProduct */
-          }
           /* END LOOP: for each active product */
         }
+        thisProduct.element.classList.add('active');
         /* END: click event listener to trigger */
       });
 
