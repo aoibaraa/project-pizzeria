@@ -204,21 +204,11 @@
   ],
   "order": [
     {
-      "address": "test",
-      "totalPrice": 29,
-      "id": 1
-    },
-    {
-      "address": "test",
-      "totalPrice": 29,
-      "id": 2
-    },
-    {
       "address": "",
       "phone": "",
-      "totalNumber": 4,
-      "subtotalPrice": 47,
-      "totalPrice": 67,
+      "totalNumber": 11,
+      "subtotalPrice": 111,
+      "totalPrice": 131,
       "deliveryFree": 20,
       "products": [
         {
@@ -230,10 +220,18 @@
           "params": {}
         },
         {
+          "id": "cake",
+          "name": "Zio Stefano's Doughnut",
+          "amount": 3,
+          "price": 27,
+          "priceSingle": 9,
+          "params": {}
+        },
+        {
           "id": "breakfast",
           "name": "Zia Giulia's Breakfast",
-          "amount": 1,
-          "price": 9,
+          "amount": 5,
+          "price": 45,
           "priceSingle": 9,
           "params": {
             "coffee": {
@@ -248,8 +246,8 @@
           "id": "pizza",
           "name": "Nonna Alba's Pizza",
           "amount": 1,
-          "price": 20,
-          "priceSingle": 20,
+          "price": 21,
+          "priceSingle": 21,
           "params": {
             "sauce": {
               "label": "Sauce",
@@ -261,22 +259,21 @@
               "label": "Toppings",
               "options": {
                 "olives": "Olives",
-                "redPeppers": "Red peppers",
-                "greenPeppers": "Green peppers",
                 "mushrooms": "Mushrooms",
-                "basil": "Fresh basil"
+                "basil": "Fresh basil",
+                "salami": "Salami"
               }
             },
             "crust": {
               "label": "pizza crust",
               "options": {
-                "standard": "standard"
+                "thick": "thick"
               }
             }
           }
         }
       ],
-      "id": 3
+      "id": 1
     }
   ]
 }
