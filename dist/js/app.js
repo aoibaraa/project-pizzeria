@@ -1,6 +1,6 @@
 import { Product } from './components/Product.js';
 import { Cart } from './components/Cart.js';
-import { select, settings } from './settings.js';
+import { select, settings, classNames } from './settings.js';
 
 const app = {
   initMenu: function () {
@@ -48,6 +48,49 @@ const app = {
     });
   },
 
+  initPages: function() {
+    const thisApp = this;
+
+    thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
+    thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
+    //thisApp.activatePage(thisApp.pages[0].id);
+    let pagesMatchingHash = [];
+
+    if(window.location.hash.length > 2){
+      const idFromHash = window.location.hash.replace('#/', '');
+
+      pagesMatchingHash = thisApp.pages.filter(function(page){
+        return page.id == idFromHash;
+      });
+    }
+
+    thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
+
+    for(let link of thisApp.navLinks){
+      link.addEventListener('click', function(event){
+        const clickedElement = this;
+        event.preventDefault();
+
+        /* get page id from href */
+        const pageId = clickedElement.getAttribute('href').replace('#', '');
+
+        /* activate page */
+        thisApp.activatePage(pageId);
+      });
+    }
+
+  },
+
+  activatePage: function(pageId){
+    const thisApp = this;
+
+    for(let link of thisApp.navLinks){
+      link.classList.toggle(classNames.nav.active, link.getAttribute('href') == '#' + pageId);
+    }
+
+    window.location.hash = '#/' + pageId;
+  },
+
   init: function () {
     const thisApp = this;
     /*console.log('*** App starting ***');
@@ -56,9 +99,11 @@ const app = {
     console.log('settings:', settings);
     console.log('templates:', templates);*/
 
+    thisApp.initPages();
     thisApp.initData();
     thisApp.initCart();
   },
+
 };
 
 app.init();
