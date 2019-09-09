@@ -22,7 +22,7 @@ export class AmountWidget extends BaseWidget {
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
 
-  isValid(newValue){
+  isValid(newValue) {
     return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
   }
 
@@ -46,11 +46,11 @@ export class AmountWidget extends BaseWidget {
     });
   }
 
-  renderValue(){
+  renderValue() {
     const thisWidget = this;
 
     thisWidget.dom.input.value = thisWidget.value;
     console.log('widget value:', thisWidget.value);
-}
+  }
 
 }

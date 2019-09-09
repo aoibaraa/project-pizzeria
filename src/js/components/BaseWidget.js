@@ -1,53 +1,53 @@
-export class BaseWidget{
+export class BaseWidget {
 
-    constructor(wrapperElement, initialValue){
-        const thisWidget = this;
+  constructor(wrapperElement, initialValue) {
+    const thisWidget = this;
 
-        thisWidget.dom = {};
-        thisWidget.dom.wrapper = wrapperElement;
-        thisWidget.correctValue = initialValue;
+    thisWidget.dom = {};
+    thisWidget.dom.wrapper = wrapperElement;
+    thisWidget.correctValue = initialValue;
+  }
+
+  get value() {
+    const thisWidget = this;
+
+    return thisWidget.correctValue;
+  }
+
+  set value(assignedValue) {
+    const thisWidget = this;
+
+    const newValue = thisWidget.parseValue(assignedValue);
+
+    if (newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
+      thisWidget.correctValue = newValue;
+      thisWidget.announce();
     }
 
-    get value(){
-        const thisWidget = this;
+    thisWidget.renderValue();
+  }
 
-        return thisWidget.correctValue;
-    }
+  parseValue(newValue) {
+    return parseInt(newValue);
+  }
 
-    set value(assignedValue){
-        const thisWidget = this;
-        
-        const newValue = thisWidget.parseValue(assignedValue);
+  isValid(newValue) {
+    return !isNaN(newValue);
+  }
 
-        if(newValue != thisWidget.correctValue && thisWidget.isValid(newValue)){
-            thisWidget.correctValue = newValue;
-            thisWidget.announce();
-        }
+  renderValue() {
+    const thisWidget = this;
 
-        thisWidget.renderValue();
-    }
+    console.log('widget value:', thisWidget.value);
+  }
 
-    parseValue(newValue){
-        return parseInt(newValue);
-    }
+  announce() {
+    const thisWidget = this;
 
-    isValid(newValue){
-        return !isNaN(newValue);
-    }
+    const event = new CustomEvent('updated', {
+      bubbles: true
+    });
 
-    renderValue(){
-        const thisWidget = this;
-
-        console.log('widget value:', thisWidget.value);
-    }
-
-    announce(){
-        const thisWidget = this;
-
-        const event = new CustomEvent('updated', {
-            bubbles: true
-        });
-
-        thisWidget.dom.wrapper.dispatchEvent(event);
-    }
+    thisWidget.dom.wrapper.dispatchEvent(event);
+  }
 }

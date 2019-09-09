@@ -44,12 +44,12 @@ const app = {
 
     thisApp.productList = document.querySelector(select.containerOf.menu);
 
-    thisApp.productList.addEventListener('add-to-cart', function(event){
+    thisApp.productList.addEventListener('add-to-cart', function (event) {
       app.cart.add(event.detail.product);
     });
   },
 
-  initPages: function() {
+  initPages: function () {
     const thisApp = this;
 
     thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
@@ -57,18 +57,18 @@ const app = {
     //thisApp.activatePage(thisApp.pages[0].id);
     let pagesMatchingHash = [];
 
-    if(window.location.hash.length > 2){
+    if (window.location.hash.length > 2) {
       const idFromHash = window.location.hash.replace('#/', '');
 
-      pagesMatchingHash = thisApp.pages.filter(function(page){
+      pagesMatchingHash = thisApp.pages.filter(function (page) {
         return page.id == idFromHash;
       });
     }
 
     thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
 
-    for(let link of thisApp.navLinks){
-      link.addEventListener('click', function(event){
+    for (let link of thisApp.navLinks) {
+      link.addEventListener('click', function (event) {
         const clickedElement = this;
         event.preventDefault();
 
@@ -82,17 +82,17 @@ const app = {
 
   },
 
-  activatePage: function(pageId){
+  activatePage: function (pageId) {
     const thisApp = this;
 
-    for(let link of thisApp.navLinks){
+    for (let link of thisApp.navLinks) {
       link.classList.toggle(classNames.nav.active, link.getAttribute('href') == '#' + pageId);
     }
 
     window.location.hash = '#/' + pageId;
   },
 
-  initBooking(){
+  initBooking() {
     const thisApp = this;
 
     const bookingWidgetContainer = document.querySelector(select.containerOf.booking);
