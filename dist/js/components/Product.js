@@ -174,7 +174,7 @@ export class Product {
 
     /* set the contents of thisProduct.priceElem to be the value of variable price */
     thisProduct.priceElem.innerHTML = thisProduct.price;
-    console.log('priceElem', thisProduct.price);
+    // console.log('priceElem', thisProduct.price);
     //console.log('thisProduct.params', thisProduct.params);
 
 
