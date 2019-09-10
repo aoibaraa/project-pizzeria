@@ -1,4 +1,4 @@
-/* global Handlebars, dataSource */
+/* global Handlebars*/
 
 export const utils = {};
 

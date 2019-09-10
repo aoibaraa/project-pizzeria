@@ -4,7 +4,7 @@ import { select, settings, classNames } from './settings.js';
 import { Booking } from './components/Booking.js';
 
 const app = {
-  initMenu: function () {
+  initMenu()/*ZMIANA: function */ {
     const thisApp = this;
     /*console.log('thisApp.data:', thisApp.data);*/
 
@@ -49,7 +49,7 @@ const app = {
     });
   },
 
-  initPages: function () {
+  initPages()/*ZMIANA: function*/ {
     const thisApp = this;
 
     thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
@@ -73,20 +73,25 @@ const app = {
         event.preventDefault();
 
         /* get page id from href */
-        const pageId = clickedElement.getAttribute('href').replace('#', '');
+        const id = clickedElement.getAttribute('href').replace('#', '');
 
         /* activate page */
-        thisApp.activatePage(pageId);
+        thisApp.activatePage(id);
       });
     }
 
   },
 
-  activatePage: function (pageId) {
+  activatePage(pageId)/*ZMIANA: function*/  {
     const thisApp = this;
+
 
     for (let link of thisApp.navLinks) {
       link.classList.toggle(classNames.nav.active, link.getAttribute('href') == '#' + pageId);
+    }
+
+    for (let page of thisApp.pages) {
+      page.classList.toggle(classNames.nav.active, page.getAttribute('id') == pageId);
     }
 
     window.location.hash = '#/' + pageId;
@@ -95,8 +100,8 @@ const app = {
   initBooking() {
     const thisApp = this;
 
-    const bookingWidgetContainer = document.querySelector(select.containerOf.booking);
-    thisApp.bookingWidget = new Booking(bookingWidgetContainer);
+    const widget = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking(widget);
   },
 
   init: function () {

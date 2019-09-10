@@ -7,7 +7,7 @@ export class AmountWidget extends BaseWidget {
     super(wrapper, settings.amountWidget.defaultValue);
     const thisWidget = this;
 
-    thisWidget.getElements(wrapper);
+    thisWidget.getElements();
     thisWidget.initActions();
 
     //console.log('AmountWidget: ', thisWidget);
@@ -22,28 +22,29 @@ export class AmountWidget extends BaseWidget {
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
 
-  isValid(newValue) {
-    return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
-  }
-
   initActions() {
     const thisWidget = this;
     //console.log('thisWidget', thisWidget);
 
-    thisWidget.dom.input.addEventListener('change', function (event) {
+    thisWidget.dom.input.addEventListener('change', function () {
       event.preventDefault();
       thisWidget.value = thisWidget.dom.input.value;
     });
 
     thisWidget.dom.linkDecrease.addEventListener('click', function (event) {
       event.preventDefault();
-      thisWidget.value = --thisWidget.dom.value;
+      thisWidget.value == --thisWidget.dom.input.value;
     });
 
     thisWidget.dom.linkIncrease.addEventListener('click', function (event) {
       event.preventDefault();
-      thisWidget.value == ++thisWidget.dom.value;
+      thisWidget.value == ++thisWidget.dom.input.value;
+      thisWidget.announce();
     });
+  }
+
+  isValid(newValue) {
+    return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
   }
 
   renderValue() {

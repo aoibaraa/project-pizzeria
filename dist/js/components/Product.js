@@ -126,13 +126,13 @@ export class Product {
         /* START IF: if option is selected and option is not default */
         if (optionSelected && !option.default) {
           /* add price of option to variable price */
-          price = price + option.price;
+          price += option.price;
         }
         /* END IF: if option is selected and option is not default */
         /* START ELSE IF: if option is not selected and option is default */
         else if (!optionSelected && option.default) {
           /* deduct price of option from price */
-          price = price - option.price;
+          price -= option.price;
         }
 
 
@@ -174,7 +174,7 @@ export class Product {
 
     /* set the contents of thisProduct.priceElem to be the value of variable price */
     thisProduct.priceElem.innerHTML = thisProduct.price;
-    //console.log('priceElem', thisProduct.priceElem);
+    console.log('priceElem', thisProduct.price);
     //console.log('thisProduct.params', thisProduct.params);
 
 
@@ -185,8 +185,8 @@ export class Product {
 
     thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
 
-    thisProduct.amountWidgetElem.addEventListener('updated', function (event) {
-      event.preventDefault();
+    thisProduct.amountWidgetElem.addEventListener('updated', function () {
+      /*event.preventDefault();*/
       thisProduct.processOrder();
     });
   }

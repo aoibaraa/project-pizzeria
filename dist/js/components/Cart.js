@@ -36,27 +36,28 @@ export class Cart {
   initActions() {
     const thisCart = this;
 
-    thisCart.dom.toggleTrigger.addEventListener('click', function (event) {
-      event.preventDefault();
+    thisCart.dom.toggleTrigger.addEventListener('click', function () {
+      /*event.preventDefault();*/
       thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
-    });
+    
 
-    thisCart.dom.productList.addEventListener('updated', function () {
-      thisCart.update();
-    });
+      thisCart.dom.productList.addEventListener('updated', function () {
+        thisCart.update();
+      });
 
-    thisCart.dom.productList.addEventListener('remove', function () {
-      thisCart.remove(event.detail.cartProduct);
-    });
+      thisCart.dom.productList.addEventListener('remove', function () {
+        thisCart.remove(event.detail.cartProduct);
+      });
 
-    thisCart.dom.form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      thisCart.sendOver();
-    });
+      thisCart.dom.form.addEventListener('submit', function () {
+        event.preventDefault();
+        thisCart.sendOrder();
+      });
+  });
 
   }
 
-  sendOver() {
+  sendOrder() {
     const thisCart = this;
     const url = settings.db.url + '/' + settings.db.order;
 
@@ -67,7 +68,7 @@ export class Cart {
       subtotalPrice: thisCart.subtotalPrice,
       totalPrice: thisCart.totalPrice,
       deliveryFree: thisCart.deliveryFee,
-      products: [],
+      products: []
     };
 
     for (let product of thisCart.products) {
