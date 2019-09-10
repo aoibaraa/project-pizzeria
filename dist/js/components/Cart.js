@@ -39,7 +39,7 @@ export class Cart {
     thisCart.dom.toggleTrigger.addEventListener('click', function () {
       /*event.preventDefault();*/
       thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
-    
+
 
       thisCart.dom.productList.addEventListener('updated', function () {
         thisCart.update();
@@ -53,7 +53,7 @@ export class Cart {
         event.preventDefault();
         thisCart.sendOrder();
       });
-  });
+    });
 
   }
 
