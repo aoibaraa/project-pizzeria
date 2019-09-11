@@ -173,6 +173,10 @@
       }
 
     }
+
+    &.selected {
+      background: #3294cd;
+    }
   }
 
   [data-table="1"] {

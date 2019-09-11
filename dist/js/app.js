@@ -4,7 +4,7 @@ import { select, settings, classNames } from './settings.js';
 import { Booking } from './components/Booking.js';
 
 const app = {
-  initMenu()/*ZMIANA: function */ {
+  initMenu() {
     const thisApp = this;
     /*console.log('thisApp.data:', thisApp.data);*/
 
@@ -49,13 +49,11 @@ const app = {
     });
   },
 
-  initPages()/*ZMIANA: function*/ {
+  initPages() {
     const thisApp = this;
 
     thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
     thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
-    thisApp.homeLinks = Array.from(document.querySelectorAll(select.nav.homeLinks));
-    thisApp.navLinks = thisApp.navLinks.concat(thisApp.homeLinks);
     //thisApp.activatePage(thisApp.pages[0].id);
     let pagesMatchingHash = [];
 
@@ -84,7 +82,7 @@ const app = {
 
   },
 
-  activatePage(pageId)/*ZMIANA: function*/  {
+  activatePage(pageId)  {
     const thisApp = this;
 
 
