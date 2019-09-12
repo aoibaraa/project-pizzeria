@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,400i&amp;display=swap&amp;subset=latin-ext" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="./vendor/range-slider.min.css">
@@ -21,6 +22,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#homepage">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -62,6 +64,99 @@
   </header>
 
   <div id="pages">
+    <section id="homepage">
+      <div class="homepage-links container">
+        <div class="half"><a href="#order"><img src="images/homepage/pizza-1.jpg" alt="Order">
+            <h1>Order online</h1>
+            <h3>Delicious food delivered to your door</h3>
+          </a></div>
+        <div class="half"><a href="#booking"><img src="images/homepage/pizza-2.jpg" alt="Booking">
+            <h1>Book a table</h1>
+            <h3>Delicious food in our restaurant</h3>
+          </a></div>
+        <div class="hours">
+          <h1>Opening hours</h1>
+          <h3>TUE-SUN, 12PM - 12AM</h3>
+        </div>
+      </div>
+      <div class="carousel container">
+        <div class="carousel-comment comment-active">
+          <div class="comment-image"><img src="images/homepage/pizza-3.jpg" alt="Comment image"></div>
+          <div class="comment-text">
+            <h2>Amazing service!</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egentas viverra tortor, eu ullamcorper
+              dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+              <p class="user">- Leo Thomas</p>
+          </div>
+
+        </div>
+        <div class="carousel-comment">
+          <div class="comment-image"><img src="images/homepage/pizza-3.jpg" alt="Comment image"></div>
+          <div class="comment-text">
+            <h2>I love it!</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egentas viverra tortor, eu ullamcorper
+              dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+              <p class="user">- Clara Osborne</p>
+          </div>
+        </div>
+        <div class="carousel-comment">
+          <div class="comment-image"><img src="images/homepage/pizza-3.jpg" alt="Comment image"></div>
+          <div class="comment-text">
+            <h2>The best Italian food!</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egentas viverra tortor, eu ullamcorper
+              dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+              <p class="user">- Georgia Fraser</p>
+          </div>
+
+        </div>
+        <div>
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+      <div class="gallery container">
+        <div class="row">
+          <div><img src="images/homepage/pizza-4.jpg" alt="gallery-image">
+            <span>
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </span>
+          </div>
+          <div><img src="images/homepage/pizza-5.jpg" alt="gallery-image">
+            <span>
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </span>
+          </div>
+          <div><img src="images/homepage/pizza-6.jpg" alt="gallery-image">
+            <span>
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </span>
+          </div>
+          <div><img src="images/homepage/pizza-7.jpg" alt="gallery-image">
+            <span>
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </span>
+          </div>
+          <div><img src="images/homepage/pizza-8.jpg" alt="gallery-image">
+            <span>
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </span>
+          </div>
+          <div><img src="images/homepage/pizza-9.jpg" alt="gallery-image">
+            <span>
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </span>
+          </div>
+        </div>
+        <a class = "instagram" href="">View more on Instagram</a>
+      </div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
